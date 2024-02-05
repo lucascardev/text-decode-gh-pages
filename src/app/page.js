@@ -1,95 +1,91 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import Image from 'next/image'
+import styles from './page.module.css'
+import vector from './assets/Vector.png'
+import { useState } from 'react'
+import Button from './components/Button'
+import { FiCopy } from "react-icons/fi";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	const [message, setMessage] = useState('')
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+	const [encryptedMessage, setEncryptedMessage] = useState('')
+  const [messageStatus, setMessageStatus] = useState('')
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+	const [passwordKey, setPasswordKey] = useState('')
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(encryptedMessage);
+      alert('Mensagem copiada para a área de transferência!');
+    } catch (err) {
+      console.log('Falha ao copiar o texto', err);
+    }
+  };
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+	return (
+		<main className={styles.main}>
+			<section className={styles.inputSection}>
+				<textarea
+					className={styles.textArea}
+          onChange={(e) => setMessage(e.target.value)}
+					value={message}
+					placeholder='Digite seu texto...'
+				/>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+				<div className={styles.options}>
+					<form className={styles.password_form}>
+						{' '}
+						<label aria-label='password_input'>Password:</label>
+						<input
+							id='password_input'
+							type='password'
+							className={styles.password_input}
+              placeholder='Senha de criptografia'
+              value={passwordKey}
+							onChange={(e) => setPasswordKey(e.target.value)}
+						/>
+					</form>
+
+					<Button
+						name='Criptografar'
+						black
+						func_type='encrypt'
+						message={message}
+						req_password={passwordKey}
+						setEncryptedMessage={setEncryptedMessage}
+            setMessage={setMessage}
+            setMessageStatus={setMessageStatus}
+					/>
+					<Button
+						name='Descriptografar'
+						black={false}
+						message={message}
+						req_password={passwordKey}
+						setEncryptedMessage={setEncryptedMessage}
+						setMessage={setMessage}
+            setMessageStatus={setMessageStatus}
+					/>
+				</div>
+			</section>
+			<section className={styles.asideSection}>
+				{encryptedMessage == '' ? (
+					<div className={styles.no_messages_display}>
+						<Image src={vector} className={styles.vector} />
+						<h3>Nenhuma mensagem encontrada</h3>
+						<p>
+							Digite, ao lado, um texto que você deseja criptografar ou
+							descriptografar.
+						</p>
+					</div>
+				) : (
+					<div className={styles.messageCard}>
+            <span className={styles.messageCardSpan}>Mensagem {messageStatus === "encrypted" ? "encriptografada" : "desencriptografada"} :</span>
+					<p className={styles.messageText}>{encryptedMessage}</p>
+          <button onClick={copyToClipboard}><FiCopy /></button>
+					</div>
+				)}
+			</section>
+		</main>
+	)
 }
