@@ -5,6 +5,8 @@ import vector from './assets/Vector.png'
 import { useState } from 'react'
 import Button from './components/Button'
 import { FiCopy } from "react-icons/fi";
+import Footer from './components/Footer'
+import alura_logo from './assets/alura_vector.png'
 
 export default function Home() {
 	const [message, setMessage] = useState('')
@@ -25,8 +27,17 @@ export default function Home() {
 
 	return (
 		<main className={styles.main}>
+    
+      <Image 
+      src={alura_logo}
+      width={20}
+      height={25}
+      className={styles.aluraImagem}
+      />
+    
 			<section className={styles.inputSection}>
 				<textarea
+        autoFocus
 					className={styles.textArea}
           onChange={(e) => setMessage(e.target.value)}
 					value={message}
@@ -67,6 +78,7 @@ export default function Home() {
             setMessageStatus={setMessageStatus}
 					/>
 				</div>
+        <Footer />
 			</section>
 			<section className={styles.asideSection}>
 				{encryptedMessage == '' ? (
