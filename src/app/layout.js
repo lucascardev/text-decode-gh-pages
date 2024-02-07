@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Decodificador de Texto  ",
-  description: "Made by Lucascardev",
+  description: "Criptografia de texto",
 };
 
 export default function RootLayout({ children }) {
