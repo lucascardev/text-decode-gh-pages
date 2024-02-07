@@ -41,7 +41,7 @@ export default function Home() {
 					className={styles.textArea}
           onChange={(e) => setMessage(e.target.value)}
 					value={message}
-					placeholder='Digite seu texto...'
+					placeholder='Digite seu texto aqui...'
 				/>
 
 				<div className={styles.options}>
