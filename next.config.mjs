@@ -21,7 +21,7 @@ const nextConfig = {
     basePath: basePath,
     images: {
         loader: 'imgix',
-        path: 'lightup.imgix.net',
+        path: '',
       },
 };
 
