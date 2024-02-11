@@ -16,11 +16,11 @@ if (isGithubActions) {
   }
 
 const nextConfig = {
-    assetPrefix: assetPrefix,
     output: 'export',
+    assetPrefix: assetPrefix, 
     basePath: basePath,
     images: {
-        loader: 'imgix',
+        loader: 'akamai',
         path: '',
       },
 };
