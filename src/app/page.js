@@ -84,7 +84,7 @@ export default function Home() {
 				{encryptedMessage == '' ? (
 					<div className={styles.no_messages_display}>
 						<Image src={vector} className={styles.vector} />
-						<h3>Nenhuma mensagem encontrada</h3>
+						<h3>Nenhuma mensagem encontrada.</h3>
 						<p>
 							Digite, ao lado, um texto que você deseja criptografar ou
 							descriptografar.
