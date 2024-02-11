@@ -17,6 +17,7 @@ if (isGithubActions) {
 
 const nextConfig = {
     assetPrefix: assetPrefix,
+    output: 'export',
     basePath: basePath,
     images: {
         loader: 'imgix',
