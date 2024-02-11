@@ -17,12 +17,9 @@ if (isGithubActions) {
 
 const nextConfig = {
     output: 'export',
-    assetPrefix: assetPrefix, 
+    reactStrictMode: true,
+    // assetPrefix: assetPrefix, 
     basePath: basePath,
-    images: {
-        loader: 'akamai',
-        path: '',
-      },
 };
 
 
