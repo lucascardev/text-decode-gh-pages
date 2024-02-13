@@ -1,12 +1,12 @@
 'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
-import vector from './assets/Vector.png'
+import vector from './assets/vector.png'
 import { useState } from 'react'
 import Button from './components/Button'
 import { FiCopy } from "react-icons/fi";
 import Footer from './components/Footer'
-import alura_logo from './assets/alura_vector.png'
+import alura_logo from './assets/aluravector.png'
 
 export default function Home() {
 	const [message, setMessage] = useState('')
