@@ -82,7 +82,7 @@ export default function Home() {
 			<section className={styles.asideSection}>
 				{encryptedMessage == '' ? (
 					<div className={styles.no_messages_display}>
-						<Image src={vector} className={styles.vector} />
+						<Image src={'./vector.png'} className={styles.vector} />
 						<h3>Nenhuma mensagem encontrada.</h3>
 						<p>
 							Digite, ao lado, um texto que você deseja
