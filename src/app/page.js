@@ -1,12 +1,12 @@
 'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
-import vector from '../../public/vector.png'
+import vector from './assets/vector.svg'
 import { useState } from 'react'
 import Button from './components/Button'
 import { FiCopy } from 'react-icons/fi'
 import Footer from './components/Footer'
-import alura_logo from '../../public/aluravector.png'
+import alura_logo from './assets/aluravector.svg'
 
 export default function Home() {
 	const [message, setMessage] = useState('')
@@ -83,10 +83,10 @@ export default function Home() {
 				{encryptedMessage == '' ? (
 					<div className={styles.no_messages_display}>
 						<Image
-							src='/text-decode-gh-pages/vector.png'
+							src={vector}
 							className={styles.vector}
-							width={500}
-							height={500}
+							width={200}
+							height={200}
 						/>
 						<h3>Nenhuma mensagem encontrada.</h3>
 						<p>
