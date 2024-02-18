@@ -14,6 +14,7 @@ export default function Button({
 }) {
 	const styles = {
 		button: {
+			cursor: 'Pointer',
 			backgroundColor: black ? '#0A3871' : '#D8DFE8',
 			border: '0.1rem outset #0A3871',
 			fontSize: '1rem',
