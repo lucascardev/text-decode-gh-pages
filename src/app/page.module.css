@@ -109,3 +109,25 @@
   justify-content: space-evenly;
 }
 
+
+/* Media queries */
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .inputSection {
+    width: 100%;
+  }
+
+  .asideSection {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .password_form {
+    font-size: 0.7rem;
+  }
+}
